@@ -21,22 +21,22 @@ function App() {
       setWeather(data);
       console.log(weather)
     })
-  }, [socket])
+  }, [weather])
 
 
 
 
   return (
     <div className="App">
-      <img className='eindhoven' src={require("./images/eindhoven.jpg")} />
-      <img className='sun' src={require("./images/sun.png")} style={{display: weather.sunny? 'block' : 'none'}} />
+      <img alt="eindhoven" className='eindhoven' src={require("./images/eindhoven.jpg")} />
+      <img alt="sun"  className='sun' src={require("./images/sun.png")} style={{display: weather.sunny? 'block' : 'none'}} />
       <div className='clouds' style={{display: weather.cloudy? 'block' : 'none'}}>
-        <img className='cloud1' src={require("./images/cloud.png")} />
-        <img className='cloud2' src={require("./images/cloud.png")} />
+        <img alt="clouds" className='cloud1' src={require("./images/cloud.png")} />
+        <img alt="clouds" className='cloud2' src={require("./images/cloud.png")} />
       </div>
-      <img className='wind' src={require("./images/wind.png")} style={{display: weather.windy? 'block' : 'none'}} />
-      <img className='rain' src={require("./images/rain.gif")} style={{display: weather.rainy? 'block' : 'none'}} />
-      <img className='storm' src={require("./images/storm.png")} style={{display: weather.stormy? 'block' : 'none'}} />
+      <img alt="wind" className='wind' src={require("./images/wind.png")} style={{display: weather.windy? 'block' : 'none'}} />
+      <img alt="rain" className='rain' src={require("./images/rain.gif")} style={{display: weather.rainy? 'block' : 'none'}} />
+      <img alt="storm" className='storm' src={require("./images/storm.png")} style={{display: weather.stormy? 'block' : 'none'}} />
     </div>
   );
 }
