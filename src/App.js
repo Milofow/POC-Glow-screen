@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import io from 'socket.io-client'
 
-const socket = io.connect("https://glow-websocket-server.herokuapp.com:18698");
+const { io } = require('socket.io-client');
+const socket = io.connect("https://glow-websocket-server.herokuapp.com");
 
 const defaultWeather = {
   sunny: true,
