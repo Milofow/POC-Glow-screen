@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import {Howl, Howler} from 'howler'
+import Thunder from './audioclips/Thunder.mp3'
+import Rain from './audioclips/Rain.mp3'
+import Wind from './audioclips/Wind.mp3'
+import Sun from './audioclips/Sun.mp3'
 
 const { io } = require('socket.io-client');
 const socket = io.connect("https://glow-websocket-server.herokuapp.com");
@@ -16,18 +21,60 @@ function App() {
 
   const [weather, setWeather] = useState({...defaultWeather});
 
+  const GetSound = () => {
+    switch(true) {
+      case weather.sunny: 
+        return Sun;
+      case weather.cloudy: 
+        return Wind;
+      case weather.windy: 
+        return Wind;
+      case weather.rainy: 
+        return Rain;
+      case weather.stormy: 
+        return Thunder;
+      default:
+        return Sun;
+    }
+  }
+
+  const PlaySound = (src) => {
+    Howler.stop();
+    const sound = new Howl({
+      src
+    })
+    sound.play();
+  }
+
+
   useEffect(() => {
     socket.on("callback", (data) => {
       setWeather(data);
       console.log(weather)
     })
+
+  }, [weather])
+
+  useEffect(() => {
+    const src = GetSound();
+    PlaySound(src);
   }, [weather])
 
 
 
+  const AllowSound = () => {
+    const src = GetSound();
+    PlaySound(src);
+  }
+
+
+
+
+  Howler.volume(0.7)
 
   return (
     <div className="App">
+      <button onClick={AllowSound()}>Allow sound</button>
       <img alt="eindhoven" className='eindhoven' src={require("./images/eindhoven.jpg")} />
       <img alt="sun"  className='sun' src={require("./images/sun.png")} style={{display: weather.sunny? 'block' : 'none'}} />
       <div className='clouds' style={{display: weather.cloudy? 'block' : 'none'}}>
