@@ -58,7 +58,7 @@ function App() {
   useEffect(() => {
     const src = GetSound();
     PlaySound(src);
-  }, [weather])
+  },)
 
 
 
