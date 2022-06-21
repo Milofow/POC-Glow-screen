@@ -75,7 +75,7 @@ function App() {
   return (
     <div className="App">
       <button onClick={AllowSound()}>Allow sound</button>
-      <img alt="eindhoven" className='eindhoven' src={require("./images/eindhoven.jpg")} />
+      <img alt="eindhoven" className='eindhoven' src={require("./images/eindhoven-station-2007.jpg")} />
       <img alt="sun"  className='sun' src={require("./images/sun.png")} style={{display: weather.sunny? 'block' : 'none'}} />
       <div className='clouds' style={{display: weather.cloudy? 'block' : 'none'}}>
         <img alt="clouds" className='cloud1' src={require("./images/cloud.png")} />
