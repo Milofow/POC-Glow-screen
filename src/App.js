@@ -48,7 +48,7 @@ function App() {
 
 
   useEffect(() => {
-    socket.on("callback", (data) => {
+    socket.on("weatherCallback", (data) => {
       setWeather(data);
       console.log(weather)
     })
